@@ -9,10 +9,6 @@ int check_cycle(listint_t *list)
 {
 	listint_t *node2 = list;
 
-	/*if (list == NULL || list->next == NULL)
-		return (0);
-	node2 = list->next->next;
-	list = list->next;*/
 	while(list && list->next && node2 && node2->next)
 	{
 		list = list->next;
