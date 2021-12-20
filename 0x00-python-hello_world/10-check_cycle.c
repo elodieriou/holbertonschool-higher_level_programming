@@ -9,11 +9,9 @@ int check_cycle(listint_t *list)
 {
 	listint_t *node1, *node2;
 
-	if (list == NULL || list->next == NULL)
-		return (0);
 	node1 = list->next;
 	node2 = list->next->next;
-	while(node1 != NULL && node2 != NULL)
+	while(list != NULL && node1 != NULL && node2 != NULL)
 	{
 		node1 = node1->next;
 		node2 = node2->next->next;
