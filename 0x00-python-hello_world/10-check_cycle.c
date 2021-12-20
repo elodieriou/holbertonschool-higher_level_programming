@@ -9,7 +9,7 @@ int check_cycle(listint_t *list)
 {
 	listint_t *node1, *node2;
 
-	if (list->next == NULL)
+	if (list->next == NULL || list == NULL)
 		return (0);
 	node1 = list->next;
 	node2 = list->next->next;
