@@ -13,7 +13,7 @@ int check_cycle(listint_t *list)
 		return (0);
 	node2 = list->next->next;
 	list = list->next;*/
-	while(list != NULL && list->next != NULL && node2 != NULL)
+	while(list && list->next && node2 && node2->next)
 	{
 		list = list->next;
 		node2 = node2->next->next;
