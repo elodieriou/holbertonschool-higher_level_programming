@@ -9,16 +9,16 @@ int check_cycle(listint_t *list)
 {
 	listint_t *node2 = list;
 
-	if (list == NULL || list->next == NULL)
+	/*if (list == NULL || list->next == NULL)
 		return (0);
 	node2 = list->next->next;
-	list = list->next;
+	list = list->next;*/
 	while(list != NULL && list->next != NULL && node2 != NULL)
 	{
-		if (list == node2)
-			return (1);
 		list = list->next;
 		node2 = node2->next->next;
+		if (list == node2)
+			return (1);
 	}
 	return (0);
 }
