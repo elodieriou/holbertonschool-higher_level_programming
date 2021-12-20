@@ -7,14 +7,12 @@
  */
 int check_cycle(listint_t *list)
 {
-	listint_t *node2;
+	listint_t *node2 = list;
 
 	if (list == NULL || list->next == NULL)
 		return (0);
 	node2 = list->next->next;
 	list = list->next;
-	if (node2->next == NULL)
-		return (0);
 	while(list != NULL && list->next != NULL && node2 != NULL)
 	{
 		if (list == node2)
