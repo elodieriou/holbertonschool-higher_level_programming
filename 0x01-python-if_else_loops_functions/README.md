@@ -513,7 +513,7 @@ carrie@ubuntu:0x01$ ./insert
 carrie@ubuntu:0x01$
 ```
 
-## Task #advanced
+## Tasks #advanced
 
 ### 14. Smile in the mirror
 
