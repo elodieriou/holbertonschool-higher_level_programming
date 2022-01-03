@@ -9,6 +9,7 @@ def check_tuple(tuple_c=()):
             tuple_c = (tuple_c[0], 0)
     return tuple_c
 
+
 def add_tuple(tuple_a=(), tuple_b=()):
     tuple_a = check_tuple(tuple_a)
     tuple_b = check_tuple(tuple_b)
