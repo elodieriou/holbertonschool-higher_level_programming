@@ -69,5 +69,5 @@ int check_listint(listint_t *head1, listint_t *head2)
 		tmp1 = tmp1->next;
 		tmp2 = tmp2->next;
 	}
-	return (1);
+	return (0);
 }
