@@ -10,8 +10,7 @@ int check_listint(listint_t *head1, listint_t *head2);
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *node1 = *head, *node2 = *head, *prev = *head;
-	listint_t *tmp = NULL, *mid = NULL;
+	listint_t *node1 = *head, *node2 = *head, *mid = NULL;
 	int result;
 
 	if (head)
@@ -20,29 +19,15 @@ int is_palindrome(listint_t **head)
 	while (node1 && node2->next)
 	{
 		node2 = node2->next->next;
-		prev = node1;
 		node1 = node1->next;
 	}
 
-	if (node2 != NULL)
-	{
-		tmp = node1;
-		node1 = node1->next;
-	}
-
-	prev->next = NULL;
 	reverse_listint(&node1);
 	mid = node1;
 	node2 = *head;
 
 	result = check_listint(*head, mid);
 	reverse_listint(&mid);
-
-	if (tmp != NULL)
-	{
-		prev->next = tmp;
-		tmp->next = mid;
-	}
 
 	return (result);
 }
