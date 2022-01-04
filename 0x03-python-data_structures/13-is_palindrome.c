@@ -69,5 +69,7 @@ int check_listint(listint_t *head1, listint_t *head2)
 		tmp1 = tmp1->next;
 		tmp2 = tmp2->next;
 	}
+	if (tmp1 == NULL && tmp2 == NULL)
+		return (1);
 	return (0);
 }
