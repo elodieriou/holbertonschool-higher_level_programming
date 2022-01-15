@@ -1,7 +1,6 @@
 #include "lists.h"
 
 listint_t *reverse_listint(listint_t **head);
-int check_listint(listint_t *head1, listint_t *head2);
 
 /**
  * is_palindrome - function that chacks if a singly linked list is a palindrome
@@ -10,66 +9,60 @@ int check_listint(listint_t *head1, listint_t *head2);
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *node1 = *head, *node2 = *head, *mid = NULL;
-	int result;
+	listint_t *tmp, *slow, *fast, *new_list;
+	int mid;
 
-	if (head)
+	slow = *head;
+	fast = *head;
+
+	if (head == NULL || *head == NULL)
 		return (1);
 
-	while (node1 && node2->next)
+	while (fast->next != NULL)
 	{
-		node2 = node2->next->next;
-		node1 = node1->next;
+		if (fast->next != NULL && fast->next->next != NULL)
+		{
+			fast = fast->next->next;
+			slow = slow->next;
+			mid +=1;
+		}
+		else if (fast->next != NULL && fast->next->next == NULL)
+			fast = fast->next;
 	}
 
-	reverse_listint(&node1);
-	mid = node1;
-	node2 = *head;
+	tmp = *head;
+	new_list = reverse(&(slow->next));
 
-	result = check_listint(*head, mid);
-	reverse_listint(&mid);
+	while (new_list != NULL)
+	{
+		if (tmp->n != new_list->n)
+			return (0);
+		new_list = new_list->next;
+		tmp = tmp->next;
+	}
 
-	return (result);
+	return (1);
 }
 
 /**
  * reverse_listint - function that reverse a linked list
  * @head: a pointer to a pointer pointed to the beginning of a linked list
- * Return: the beginning of a linked list
+ * Return: the beginning of a linked list reversed
  */
 listint_t *reverse_listint(listint_t **head)
 {
-	listint_t *prev = NULL,  *next = NULL;
+	listint_t *prev, *next, *current;
 
-	while (*head)
+	prev = NULL;
+	next = NULL;
+	current = *head;
+
+	while (current != NULL)
 	{
-		next = (*head)->next;
-		(*head)->next = prev;
-		prev = *head;
-		*head = next;
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		current = next;
 	}
-	*head = prev;
-	return (*head);
-}
-
-/**
- * check_listint - function that check if two node have same data
- * @head1: a pointer to the beginning of the first list
- * @head2: a pointer to the beginning of the second list
- * Return: 0 if it isn't a palindrome, 1 if it is a palindrome
- */
-int check_listint(listint_t *head1, listint_t *head2)
-{
-	listint_t *tmp1 = head1, *tmp2 = head2;
-
-	while (tmp1 && tmp2)
-	{
-		if (tmp1->n != tmp2->n)
-			return (0);
-		tmp1 = tmp1->next;
-		tmp2 = tmp2->next;
-	}
-	if (tmp1 == NULL && tmp2 == NULL)
-		return (1);
-	return (0);
+	return (prev);
 }
