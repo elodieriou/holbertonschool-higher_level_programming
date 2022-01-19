@@ -51,7 +51,10 @@ Disassembly of circumference:
              16 BINARY_MULTIPLY
              17 RETURN_VALUE
 """
+
+
 import math
+
 
 class MagicClass:
     """ The class MagicClass that a circle"""
