@@ -132,8 +132,9 @@ class Square:
         """
         if self.__size == 0:
             print("")
-        for pos_1 in range(self.__position[1]):
-            print("")
+        elif self.__position[1] > 0:
+            for pos_1 in range(self.__position[1]):
+                print("")
         for row in range(self.__size):
             for pos_0 in range(self.__position[0]):
                 print(" ", end="")
