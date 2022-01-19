@@ -36,28 +36,6 @@ class Square:
         elif size < 0:
             raise ValueError('size must be >= 0')
 
-    @property
-    def size(self):
-        """
-        @property method retrieve the data.
-        Return the size of a square
-        """
-        return self.__size
-
-    @size.setter
-    def size(self, value):
-        """
-        @size.setter method change the data.
-
-        Args:
-        - value (int): the size of the square, must be an integer
-        """
-        self.__size = value
-        if isinstance(value, int) is False:
-            raise TypeError('value must be an integer')
-        elif value < 0:
-            raise ValueError('value must be >= 0')
-
     def area(self):
         """
         The area method is a public instance.
