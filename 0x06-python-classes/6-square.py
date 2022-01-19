@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Class Square tant defines a square:
+Class Square that defines a square:
 
 - Private instance attribute: size
   * property def size(self): to retrieve it
