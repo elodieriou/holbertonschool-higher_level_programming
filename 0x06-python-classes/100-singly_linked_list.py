@@ -14,13 +14,15 @@ Class Node that defines a node of a singly linked list by:
     . next_node can be None or must be a Node, otherwise raise a TypeError
       exception with the message next_node must be a Node object
 
-- Instantiation with data and next_node: def __init__(self, data, next_node=None):
+- Instantiation with data and next_node: def __init__(self, data,
+  next_node=None)
 """
+
 
 class Node:
     """ The class Node define a node of a singly linked list."""
 
-    def __init__ (self, data, next_node=None):
+    def __init__(self, data, next_node=None):
         """ The __init__ method use.
 
         Args:
@@ -82,6 +84,7 @@ class Node:
         if type(value) != Node and value is not None:
             raise TypeError('next_node must be a Node object')
 
+
 class SinglyLinkedList:
     """ The class SinglyLinkedList define the head."""
 
@@ -102,12 +105,12 @@ class SinglyLinkedList:
         """
 
         new_node = Node(value)
-        if self.__head == None:
+        if self.__head is None:
             new_node.next_node = self.__head
             self.__head = new_node
         else:
             tmp = self.__head
-            while (tmp.next_node != None and tmp.next_node.data < value):
+            while (tmp.next_node is not None and tmp.next_node.data < value):
                 tmp = tmp.next_node
             new_node.next_node = tmp.next_node
             tmp.next_node = new_node
@@ -115,9 +118,9 @@ class SinglyLinkedList:
     def __repr__(self):
         """The repr method indicate how to print the linked list"""
 
-        sll = [];
+        sll = []
         tmp = self.__head
-        while (tmp != None):
+        while (tmp is not None):
             sll.append(str(tmp.data))
             tmp = tmp.next_node
         return "\n".join(sll)
