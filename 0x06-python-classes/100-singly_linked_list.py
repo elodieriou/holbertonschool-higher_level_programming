@@ -39,7 +39,7 @@ class Node:
         if type(data) != int:
             raise TypeError('data must be an integer')
 
-        elif type(next_node) != Node and next_node is not None:
+        elif type(next_node) is not Node and next_node is not None:
             raise TypeError('next_node must be a Node object')
 
     @property
@@ -105,12 +105,18 @@ class SinglyLinkedList:
         """
 
         new_node = Node(value)
+
         if self.__head is None:
+            new_node.next_node = None
+            self.__head = new_node
+
+        elif self.__head.data > value:
             new_node.next_node = self.__head
             self.__head = new_node
+
         else:
             tmp = self.__head
-            while (tmp.next_node is not None and tmp.next_node.data < value):
+            while tmp.next_node is not None and tmp.next_node.data < value:
                 tmp = tmp.next_node
             new_node.next_node = tmp.next_node
             tmp.next_node = new_node
@@ -120,7 +126,7 @@ class SinglyLinkedList:
 
         sll = []
         tmp = self.__head
-        while (tmp is not None):
+        while tmp is not None:
             sll.append(str(tmp.data))
             tmp = tmp.next_node
         return "\n".join(sll)
