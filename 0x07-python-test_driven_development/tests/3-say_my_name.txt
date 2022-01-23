@@ -1,0 +1,96 @@
+=========================
+How to use say_my_name.py
+=========================
+Only one function called 'say_my_name()'
+
+Import module
+=============
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Return
+======
+Nothing
+
+Tests 'I am a string'
+============
+>>> say_my_name("Elodie", "RIOU")
+My name is Elodie RIOU
+
+>>> say_my_name("holberton", "school")
+My name is holberton school
+
+>>> say_my_name("Elodie")
+My name is Elodie 
+
+>>> say_my_name("Elodie Ray", "RIOU !")
+My name is Elodie Ray RIOU !
+
+>>> say_my_name(str(123), str(321))
+My name is 123 321
+
+Tests errors
+============
+
+    Test case "numbers"
+    -------------------
+>>> say_my_name(23)
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+>>> say_my_name("Elodie", 91)
+Traceback (most recent call last):
+TypeError: last_name must be a string
+
+>>> say_my_name(2.3)
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+>>> say_my_name("Elodie", 9.1)
+Traceback (most recent call last):
+TypeError: last_name must be a string
+
+>>> say_my_name(float("inf"), "Riou")
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+>>> say_my_name(float("NaN"), "Riou")
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+
+    Test case "tuple" and "list"
+    ----------------------------
+>>> say_my_name((23, 6, 91))
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+>>> say_my_name("Elodie", (91, 23))
+Traceback (most recent call last):
+TypeError: last_name must be a string
+
+>>> say_my_name([23, 6])
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+>>> say_my_name("Elodie", [91, 23, 6])
+Traceback (most recent call last):
+TypeError: last_name must be a string
+
+
+    Test case "None"
+    ---------------
+>>> say_my_name(None)
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+>>> say_my_name("Elodie", None)
+Traceback (most recent call last):
+TypeError: last_name must be a string
+
+>>> say_my_name(None, None)
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+>>> say_my_name()
+Traceback (most recent call last):
+TypeError: say_my_name() missing 1 required positional argument: 'first_name'
