@@ -11,7 +11,7 @@ Return
 ======
 'add_integer()' returns the addition of its arguments.
 
-Tests add integer
+Tests numbers
 =================
 >>> add_integer(2, 98)
 100
@@ -32,7 +32,8 @@ Tests add integer
 
 Tests errors
 ============
-    - Test case "string"
+    Test case "string"
+    ------------------
 >>> add_integer("Hello", 98)
 Traceback (most recent call last):
 TypeError: a must be an integer
@@ -41,7 +42,12 @@ TypeError: a must be an integer
 Traceback (most recent call last):
 TypeError: b must be an integer
 
-    - Test case "tuple"
+>>> add_integer("Hello", "World")
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+    Test case "tuple"
+    -----------------
 >>> add_integer((0, 2), 98)
 Traceback (most recent call last):
 TypeError: a must be an integer
@@ -50,7 +56,12 @@ TypeError: a must be an integer
 Traceback (most recent call last):
 TypeError: b must be an integer
 
-    - Test case "list"
+>>> add_integer((0, 2), (98, 100))
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+    Test case "list"
+    ----------------
 >>> add_integer([0, 2], 98)
 Traceback (most recent call last):
 TypeError: a must be an integer
@@ -59,7 +70,12 @@ TypeError: a must be an integer
 Traceback (most recent call last):
 TypeError: b must be an integer
 
-    - Test case "None"
+>>> add_integer([0, 2], [98, 100])
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+    Test case "None"
+    ----------------
 >>> add_integer(None)
 Traceback (most recent call last):
 TypeError: a must be an integer
@@ -67,3 +83,22 @@ TypeError: a must be an integer
 >>> add_integer(2, None)
 Traceback (most recent call last):
 TypeError: b must be an integer
+
+>>> add_integer(None, None)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>>> add_integer()
+Traceback (most recent call last):
+TypeError: add_integer() missing 1 required positional argument: 'a'
+
+
+    Test case "float('inf')" and "float('NaN')"
+    -------------------------------------------
+>>> add_integer(float("inf"))
+Traceback (most recent call last):
+OverflowError: cannot convert float infinity to integer
+
+>>> add_integer(float("NaN"))
+Traceback (most recent call last):
+ValueError: cannot convert float NaN to integer
