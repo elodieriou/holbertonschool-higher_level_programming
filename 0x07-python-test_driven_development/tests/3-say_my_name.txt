@@ -1,7 +1,7 @@
 =========================
-How to use say_my_name.py
+How to use print_square.py
 =========================
-Only one function called 'say_my_name()'
+Only one function called 'print_square()'
 
 Import module
 =============
@@ -11,8 +11,8 @@ Return
 ======
 Nothing
 
-Tests 'I am a string'
-============
+Tests 'the string'
+==================
 >>> say_my_name("Elodie", "RIOU")
 My name is Elodie RIOU
 

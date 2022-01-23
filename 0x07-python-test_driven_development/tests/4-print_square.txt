@@ -1,0 +1,99 @@
+=========================
+How to use say_my_name.py
+=========================
+Only one function called 'say_my_name()'
+
+Import module
+=============
+>>> print_square = __import__('4-print_square').print_square
+
+Return
+======
+Nothing
+
+Tests 'the size'
+================
+>>> print_square(4)
+####
+####
+####
+####
+
+>>> print_square(10)
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+
+>>> print_square(0)
+
+>>> print_square(1)
+#
+
+Tests errors
+============
+
+    Test case 'non-integers'
+    ------------------------
+>>> print_square(4.5)
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+>>> print_square(-9.7)
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+>>> print_square(float("inf"))
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+>>> print_square(float("NaN"))
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+>>> print_square("hello")
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+>>> print_square("2")
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+>>> print_square(str(5))
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+
+    Test case 'less than 0'
+    -----------------------
+>>> print_square(-1)
+Traceback (most recent call last):
+ValueError: size must be >= 0
+
+>>> print_square(-10)
+Traceback (most recent call last):
+ValueError: size must be >= 0
+
+
+    Test case 'multiple arguments'
+    ------------------------------
+>>> print_square(4, 2)
+Traceback (most recent call last):
+TypeError: print_square() takes 1 positional argument but 2 were given
+
+
+    Test case 'None'
+    ----------------
+>>> print_square(None)
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+>>> print_square()
+Traceback (most recent call last):
+TypeError: print_square() missing 1 required positional argument: 'size'
