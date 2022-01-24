@@ -24,28 +24,34 @@ def text_indentation(text):
     else:
         new_text = ""
         i = 0
-        while i < len(text) - 1 and text[i] == " ":
-            i += 1
+        while text[i] == " ":
+            if i != len(text) - 1:
+                i += 1
+            else:
+                return
 
         j = len(text) - 1
         while text[j] == " ":
             j -= 1
 
         while i <= j:
-            if text[i] == "." or text[i] == "?" or text[i] == ":":
+            if text[i] in ['.', '?', ':']:
                 new_text += text[i]
                 new_text += "\n"
                 new_text += "\n"
+                if i == j:
+                    break
                 i += 1
 
                 if text[i] == "\n":
+                    new_text += "\n"
                     i += 1
 
-                while i < j and text[i] == " ":
+                while i <= j and text[i] == " ":
                     i += 1
                 continue
 
-            else:
+            elif i <= j:
                 new_text += text[i]
                 i += 1
 
