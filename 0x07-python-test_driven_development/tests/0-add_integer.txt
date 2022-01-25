@@ -46,6 +46,10 @@ TypeError: b must be an integer
 Traceback (most recent call last):
 TypeError: a must be an integer
 
+>>> add_integer(str(1), str(2))
+Traceback (most recent call last):
+TypeError: a must be an integer
+
     Test case "tuple"
     -----------------
 >>> add_integer((0, 2), 98)

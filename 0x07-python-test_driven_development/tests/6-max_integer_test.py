@@ -16,6 +16,7 @@ class TestMaxInteger(unittest.TestCase):
             - integers: positive and negative
             - float: positive and negative
             - characters
+            - strings
         """
         self.assertEqual(max_integer([1, 2, 3, 4]), 4)
         self.assertEqual(max_integer([1, 3, 4, 2]), 4)
