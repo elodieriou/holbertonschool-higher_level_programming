@@ -1,0 +1,108 @@
+========================
+How to use matrix_mul.py
+=========================
+Only one function called 'matrix_mul()'
+
+Import module
+=============
+>>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+
+Initialization
+==============
+>>> matrix = [[1, 2], [3, 4]], [[1, 2], [3, 4]]
+>>> matrix = [[1, 2]], [[3, 4], [5, 6]]
+
+Return
+======
+The product of two matrices
+
+Tests 'the product'
+===================
+>>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+[[7, 10], [15, 22]]
+
+>>> matrix_mul([[1.1, 2], [3.3, 4]], [[1, 2.2], [3, 4.4]])
+[[7.1, 11.22], [15.3, 24.86]]
+
+>>> matrix_mul([[1, -2], [3, -4]], [[-1, 2], [-3, 4]])
+[[5, -6], [9, -10]]
+
+>>> matrix_mul([[float("NaN"), -2], [3, -4]], [[-1, 2], [-3, 4]])
+[[nan, nan], [9, -10]]
+
+>>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, float("inf")]])
+[[7, inf], [15, inf]]
+
+Tests errors
+============
+
+    Test case 'non-list'
+    --------------------
+>>> matrix_mul(2, [[1, 2], [3, 4]])
+Traceback (most recent call last):
+TypeError: m_a must be a list
+
+>>> matrix_mul([[1, 2], [3, 4]], "BestSchool")
+Traceback (most recent call last):
+TypeError: m_b must be a list
+
+
+    Test case 'non-list of list'
+    ----------------------------
+>>> matrix_mul([2, 3], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+TypeError: m_a must be a list of lists
+
+>>> matrix_mul([[1, 2], [3, 4]], ["BestSchool", "Holberton"])
+Traceback (most recent call last):
+TypeError: m_b must be a list of lists
+
+
+    Test case 'non-int/float'
+    -------------------------
+>>> matrix_mul([["Best", 2], [3, 4]], [["School", 2], [3, 4]])
+Traceback (most recent call last):
+TypeError: m_a should contain only integers or floats
+
+>>> matrix_mul([[1, 2], [3, 4]], [["School", "Best"], [3, 4]])
+Traceback (most recent call last):
+TypeError: m_b should contain only integers or floats
+
+>>> matrix_mul([[1, 2], [str(3), 4]], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+TypeError: m_a should contain only integers or floats
+
+>>> matrix_mul([[1, 2, 3], [3, 4, 5]], [[1, 2, None], [3, 4, 5]])
+Traceback (most recent call last):
+TypeError: m_b should contain only integers or floats
+
+
+    Test case 'non-same size'
+    -------------------------
+>>> matrix_mul([[1, 2], [3]], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+TypeError: each row of m_a must be of the same size
+
+>>> matrix_mul([[1, 2], [3, 4]], [[1], [3, 4]])
+Traceback (most recent call last):
+TypeError: each row of m_b must be of the same size
+
+
+    Test case "can't be multiplied"
+    -------------------------------
+>>> matrix_mul([[1, 2, 3], [3, 4, 5]], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+ValueError: m_a and m_b can't be multiplied
+
+
+    Test case 'missing arguments'
+    -----------------------------
+>>> matrix_mul([[1, 2, 3], [3, 4, 5]])
+Traceback (most recent call last):
+    ...
+TypeError: matrix_mul() missing 1 required positional argument: 'm_b'
+
+>>> matrix_mul()
+Traceback (most recent call last):
+    ...
+TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
