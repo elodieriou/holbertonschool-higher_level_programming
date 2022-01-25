@@ -1,0 +1,108 @@
+========================
+How to use lazy_matrix_mul.py
+=========================
+Only one function called 'lazy_matrix_mul()'
+
+Import module
+=============
+>>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+Initialization
+==============
+>>> matrix = [[1, 2], [3, 4]], [[1, 2], [3, 4]]
+>>> matrix = [[1, 2]], [[3, 4], [5, 6]]
+
+Return
+======
+The product of two matrices imported NumPy
+
+Tests 'the product'
+===================
+>>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+[[7, 10], [15, 22]]
+
+>>> lazy_matrix_mul([[1.1, 2], [3.3, 4]], [[1, 2.2], [3, 4.4]])
+[[7.1, 11.22], [15.3, 24.86]]
+
+>>> lazy_matrix_mul([[1, -2], [3, -4]], [[-1, 2], [-3, 4]])
+[[5, -6], [9, -10]]
+
+>>> lazy_matrix_mul([[float("NaN"), -2], [3, -4]], [[-1, 2], [-3, 4]])
+[[nan, nan], [9, -10]]
+
+>>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, float("inf")]])
+[[7, inf], [15, inf]]
+
+Tests errors
+============
+
+    Test case 'non-list'
+    --------------------
+>>> lazy_matrix_mul(2, [[1, 2], [3, 4]])
+Traceback (most recent call last):
+TypeError: m_a must be a list
+
+>>> lazy_matrix_mul([[1, 2], [3, 4]], "BestSchool")
+Traceback (most recent call last):
+TypeError: m_b must be a list
+
+
+    Test case 'non-list of list'
+    ----------------------------
+>>> lazy_matrix_mul([2, 3], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+TypeError: m_a must be a list of lists
+
+>>> lazy_matrix_mul([[1, 2], [3, 4]], ["BestSchool", "Holberton"])
+Traceback (most recent call last):
+TypeError: m_b must be a list of lists
+
+
+    Test case 'non-int/float'
+    -------------------------
+>>> lazy_matrix_mul([["Best", 2], [3, 4]], [["School", 2], [3, 4]])
+Traceback (most recent call last):
+TypeError: m_a should contain only integers or floats
+
+>>> lazy_matrix_mul([[1, 2], [3, 4]], [["School", "Best"], [3, 4]])
+Traceback (most recent call last):
+TypeError: m_b should contain only integers or floats
+
+>>> lazy_matrix_mul([[1, 2], [str(3), 4]], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+TypeError: m_a should contain only integers or floats
+
+>>> lazy_matrix_mul([[1, 2, 3], [3, 4, 5]], [[1, 2, None], [3, 4, 5]])
+Traceback (most recent call last):
+TypeError: m_b should contain only integers or floats
+
+
+    Test case 'non-same size'
+    -------------------------
+>>> lazy_matrix_mul([[1, 2], [3]], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+TypeError: each row of m_a must be of the same size
+
+>>> lazy_matrix_mul([[1, 2], [3, 4]], [[1], [3, 4]])
+Traceback (most recent call last):
+TypeError: each row of m_b must be of the same size
+
+
+    Test case "can't be multiplied"
+    -------------------------------
+>>> lazy_matrix_mul([[1, 2, 3], [3, 4, 5]], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+ValueError: m_a and m_b can't be multiplied
+
+
+    Test case 'missing arguments'
+    -----------------------------
+>>> lazy_matrix_mul([[1, 2, 3], [3, 4, 5]])
+Traceback (most recent call last):
+    ...
+TypeError: matrix_mul() missing 1 required positional argument: 'm_b'
+
+>>> lazy_matrix_mul()
+Traceback (most recent call last):
+    ...
+TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
