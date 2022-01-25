@@ -19,19 +19,27 @@ The product of two matrices imported NumPy
 Tests 'the product'
 ===================
 >>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
-[[7, 10], [15, 22]]
+array([[ 7, 10],
+           [15, 22]])
+
 
 >>> lazy_matrix_mul([[1.1, 2], [3.3, 4]], [[1, 2.2], [3, 4.4]])
-[[7.1, 11.22], [15.3, 24.86]]
+array([[ 7.1 , 11.22],
+           [15.3 , 24.86]])
 
 >>> lazy_matrix_mul([[1, -2], [3, -4]], [[-1, 2], [-3, 4]])
-[[5, -6], [9, -10]]
+array([[  5,  -6],
+           [  9, -10]])
+
 
 >>> lazy_matrix_mul([[float("NaN"), -2], [3, -4]], [[-1, 2], [-3, 4]])
-[[nan, nan], [9, -10]]
+array([[ nan,  nan],
+           [  9., -10.]])
+
 
 >>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, float("inf")]])
-[[7, inf], [15, inf]]
+array([[ 7., inf],
+           [15., inf]])
 
 Tests errors
 ============
@@ -39,8 +47,8 @@ Tests errors
     Test case 'non-list'
     --------------------
 >>> lazy_matrix_mul(2, [[1, 2], [3, 4]])
-Traceback (most recent call last):
-TypeError: m_a must be a list
+array([[2, 4],
+           [6, 8]])
 
 >>> lazy_matrix_mul([[1, 2], [3, 4]], "BestSchool")
 Traceback (most recent call last):
