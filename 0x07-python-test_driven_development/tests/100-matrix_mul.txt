@@ -112,6 +112,6 @@ TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
 Traceback (most recent call last):
 ValueError: m_a can't be empty
 
->>> matrix_mul([[1, 2, 3], [3, 4], [[]])
+>>> matrix_mul([[1, 2, 3], [3, 4, 5]], [[]])
 Traceback (most recent call last):
 ValueError: m_b can't be empty
