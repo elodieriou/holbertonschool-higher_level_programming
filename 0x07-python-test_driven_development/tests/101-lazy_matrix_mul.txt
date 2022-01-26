@@ -47,13 +47,13 @@ Tests errors
 
     Test case 'non-int/float'
     -------------------------
->>> lazy_matrix_mul([[1, 2], [3, 4]], "BestSchool")
+>>> lazy_matrix_mul([[1, 2], [3, 4]], "Holberton")
 Traceback (most recent call last):
-TypeError: ufunc 'multiply' did not contain a loop with signature matching types dtype('<U10') dtype('<U10') dtype('<U10')
+TypeError: ufunc 'multiply' did not contain a loop with signature matching types dtype('<U9') dtype('<U9') dtype('<U9')
 
->>> lazy_matrix_mul("BestSchool", [[1, 2], [3, 4]])
+>>> lazy_matrix_mul("Holberton", [[5, 6], [7, 8]])
 Traceback (most recent call last):
-TypeError: ufunc 'multiply' did not contain a loop with signature matching types dtype('<U10') dtype('<U10') dtype('<U10')
+TypeError: ufunc 'multiply' did not contain a loop with signature matching types dtype('<U9') dtype('<U9') dtype('<U9')
 
 >>> lazy_matrix_mul([["Best", 2], [3, 4]], [["School", 2], [3, 4]])
 Traceback (most recent call last):
@@ -63,7 +63,7 @@ ValueError: data type must provide an itemsize
 Traceback (most recent call last):
 ValueError: setting an array element with a sequence
 
->>> lazy_matrix_mul([[1, 2], [3, "4"]], [[1, 2], [3, 4]])
+>>> lazy_matrix_mul([[5, "6"], [7, 8]] , [[5, 6], [7, 8]])
 Traceback (most recent call last):
 ValueError: data type must provide an itemsize
 
