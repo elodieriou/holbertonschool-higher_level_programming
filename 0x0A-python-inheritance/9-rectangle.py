@@ -16,13 +16,6 @@ The module define a subclass Rectangle inherits from BaseGeometry:
         . width and height must be private. No getter or setter
         . width and height must be positive integers, validated by
           integer_validator
-
-The module define a subclass Square inherits from Rectangle inherits
-from BaseGeometry:
-    * Instantiation with size: def __init__(self, size)::
-        . size must be private. No getter or setter
-        . size must be a positive integer, validated by integer_validator
-    * the area() method must be implemented
 """
 
 
@@ -92,9 +85,3 @@ class Rectangle(BaseGeometry):
         w = self.__width
         h = self.__height
         return "[Rectangle] {:d}/{:d}".format(w, h)
-
-
-class Square(Rectangle):
-    """
-
-    """
