@@ -96,10 +96,3 @@ TypeError: integer_validator() takes 3 positional arguments but 4 were given
 >>> bg.area()
 Traceback (most recent call last):
 Exception: area() is not implemented
-
-
-    Test case 'name is not a string'
-    --------------------------------
->>> bg.integer_validator(2, 2)
-Traceback (most recent call last):
-TypeError: width must be an integer
