@@ -9,32 +9,18 @@ from BaseGeometry:
     * print() should print, and str() should return, the square description:
       [Square] <width>/<height>
 """
-
-
 Rectangle = __import__('9-rectangle').Rectangle
-
-""" Import the class Rectangle"""
 
 
 class Square(Rectangle):
-    """
-    The class Square define:
-        * Instantiation with size: def __init__(self, size)
-        * the area() method must be implemented
-    """
+    """The class Square define:"""
 
     def __init__(self, size):
-        """
-        The initialization method of class Square.
-        Args:
-        - __size (int, private)
-        """
+        """The initialization method of class Square."""
         super().integer_validator("size", size)
         super().__init__(size, size)
         self.__size = size
 
     def area(self):
-        """
-        The method that compute the area of a square.
-        """
+        """ The method that compute the area of a square."""
         return self.__size ** 2
