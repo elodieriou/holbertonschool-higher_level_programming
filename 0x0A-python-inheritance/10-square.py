@@ -14,6 +14,7 @@ class Square(Rectangle):
     """
     The class Square define:
         * Instantiation with size: def __init__(self, size)
+        * the area() method must be implemented
     """
     def __init__(self, size):
         """
@@ -25,3 +26,10 @@ class Square(Rectangle):
         super().__init__(size, size)
         self.integer_validator("size", size)
         self.__size = size
+
+    def area(self):
+        """
+        The method that compute the area of a square.
+        """
+        s = self.__size
+        return s * s
