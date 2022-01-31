@@ -12,6 +12,7 @@ from BaseGeometry:
 
 
 Rectangle = __import__('9-rectangle').Rectangle
+
 """ Import the class Rectangle"""
 
 
