@@ -7,6 +7,8 @@ from BaseGeometry:
         . size must be a positive integer, validated by integer_validator
     * the area() method must be implemented
 """
+
+
 Rectangle = __import__('9-rectangle').Rectangle
 
 

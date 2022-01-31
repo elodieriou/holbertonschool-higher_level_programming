@@ -9,6 +9,8 @@ from BaseGeometry:
     * print() should print, and str() should return, the square description:
       [Square] <width>/<height>
 """
+
+
 Rectangle = __import__('9-rectangle').Rectangle
 
 
@@ -41,4 +43,4 @@ class Square(Rectangle):
         """
         w = self.__size
         h = self.__size
-        return "[Square] {:d}/{:d}".format(w, h)
+        return "[Square] {}/{}".format(w, h)
