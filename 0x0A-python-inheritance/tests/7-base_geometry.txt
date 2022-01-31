@@ -1,0 +1,94 @@
+========================
+How to use base_geometry.py
+=========================
+
+Import module
+=============
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Class instance
+==============
+>>> bg = BaseGeometry()
+
+Tests 'with integers'
+====================
+>>> bg.integer_validator("my_int", 12)
+
+>>> bg.integer_validator("width", 89)
+
+Tests errors
+============
+
+    Test case 'not an integer'
+    --------------------------
+>>> bg.integer_validator("width", -1)
+Traceback (most recent call last):
+ValueError: width must be greater than 0
+
+>>> bg.integer_validator("width", 8.9)
+Traceback (most recent call last):
+TypeError: width must be an integer
+
+>>> bg.integer_validator("width", (1, ))
+Traceback (most recent call last):
+TypeError: width must be an integer
+
+>>> bg.integer_validator("width", [1])
+Traceback (most recent call last):
+TypeError: width must be an integer
+
+>>> bg.integer_validator("width", True)
+Traceback (most recent call last):
+TypeError: width must be an integer
+
+>>> bg.integer_validator("width", None)
+Traceback (most recent call last):
+TypeError: width must be an integer
+
+>>> bg.integer_validator("width", float("inf"))
+Traceback (most recent call last):
+TypeError: width must be an integer
+
+>>> bg.integer_validator("width", float("NaN"))
+Traceback (most recent call last):
+TypeError: width must be an integer
+
+>>> bg.integer_validator("width", "number")
+Traceback (most recent call last):
+TypeError: width must be an integer
+
+
+    Test case 'less or equal to 0'
+    ------------------------------
+>>> bg.integer_validator("width", -1)
+Traceback (most recent call last):
+ValueError: width must be greater than 0
+
+>>> bg.integer_validator("width", 0)
+Traceback (most recent call last):
+ValueError: width must be greater than 0
+
+
+    Test case 'less arguments'
+    ----------------------------
+>>> bg.integer_validator("width")
+Traceback (most recent call last):
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+>>> bg.integer_validator()
+Traceback (most recent call last):
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+
+    Test case 'more than 2 arguments'
+    ---------------------------------
+>>> bg.integer_validator("width", 0, 2)
+Traceback (most recent call last):
+TypeError: integer_validator() takes 3 positional arguments but 4 were given
+
+
+    Test case 'area() is not implemented'
+    -------------------------------------
+>>> bg.area()
+Traceback (most recent call last):
+Exception: area() is not implemented
