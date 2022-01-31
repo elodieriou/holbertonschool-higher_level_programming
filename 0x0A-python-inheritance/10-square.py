@@ -21,7 +21,6 @@ class Square(Rectangle):
     def __init__(self, size):
         """
         The initialization method of class Square.
-
         Args:
             - __size (int, private)
         """
