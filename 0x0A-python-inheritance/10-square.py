@@ -19,17 +19,9 @@ class Square(Rectangle):
         * the area() method must be implemented
     """
     def __init__(self, size):
-        """
-        The initialization method of class Square.
-        Args:
-            - __size (int, private)
-        """
         super().integer_validator("size", size)
         super().__init__(size, size)
         self.__size = size
 
     def area(self):
-        """
-        The method that compute the area of a square.
-        """
-        return self.__size * self.__size
+        return self.__size ** 2
