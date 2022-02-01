@@ -59,5 +59,5 @@ class Student:
                 . A dictionary key will be the public attribute name
                 . A dictionary value will be the value of the public attribute
         """
-        for element in json:
-            self.__dict__[element] = json[element]
+        for key, value in json.items():
+            self.__dict__[key] = value
