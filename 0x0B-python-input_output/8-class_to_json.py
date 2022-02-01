@@ -3,7 +3,6 @@
 The module define the function 'class_to_json()'
 """
 import json
-MyClass = __import__('8-my_class').MyClass
 
 
 def class_to_json(obj):
