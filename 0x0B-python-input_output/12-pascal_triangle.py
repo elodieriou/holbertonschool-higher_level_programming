@@ -16,7 +16,7 @@ def pascal_triangle(n):
     number_add = 0
 
     if n <= 0:
-        return triangle
+        return []
 
     for i in range(n):
         add1 = 0
