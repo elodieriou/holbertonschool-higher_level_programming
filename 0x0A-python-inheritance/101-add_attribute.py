@@ -12,8 +12,7 @@ def add_attribute(obj, key, value):
         - key (str): the attribute name
         - value: the value to set the name attribute to
     """
-    if isinstance(obj, (int, float, str, list, tuple, dict, set, bool,
-                        frozenset)):
+    if hasattr(obj, '__dict__') is False:
         raise TypeError('can\'t add new attribute')
     else:
         setattr(obj, key, value)
