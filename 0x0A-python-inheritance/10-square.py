@@ -1,21 +1,35 @@
 #!/usr/bin/python3
-"""Write a class Square that inherits from Rectangle
-size must be private. No getter or setter
-size must be a positive integer, validated by integer_validator
-the area() method must be implemented
+"""
+The module define a subclass Square inherits from Rectangle inherits
+BaseGeometry:
+    * Instantiation with size: def __init__(self, size)::
+        . size must be private. No getter or setter
+        . size must be a positive integer, validated by integer_validator
+    * the area() method must be implemented
+    * print() should print, and str() should return, the square description:
+      [Square] <width>/<height>
 """
 Rectangle = __import__('9-rectangle').Rectangle
 
 
 class Square(Rectangle):
-    """ defined a square of size "size by size" """
-
+    """
+    The class Square define:
+        * Instantiation with size: def __init__(self, size)
+        * the area() method must be implemented
+    """
     def __init__(self, size):
-        """ defined a square of size "size by size" """
+        """
+        The initialization method of class Square.
+        Args:
+            - __size (int, private)
+        """
         super().integer_validator("size", size)
         super().__init__(size, size)
         self.__size = size
 
     def area(self):
-        """function that compute the area of the square"""
-        return self.__size ** 2
+        """
+        The method that compute the area of a square.
+        """
+        return self.__size * self.__size
