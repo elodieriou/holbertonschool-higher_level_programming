@@ -6,6 +6,8 @@ the area() method must be implemented
 """
 Rectangle = __import__('9-rectangle').Rectangle
 
+""" create a class square of inheritance from Rectangle"""
+
 
 class Square(Rectangle):
     """ defined a square of size "size by size" """
