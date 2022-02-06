@@ -4,6 +4,7 @@ The module define the class Base.
 """
 import os.path
 import json
+import csv
 
 
 class Base:
@@ -54,7 +55,7 @@ class Base:
         The class method writes the JSON string representation of
         list_objs to a file.
         Args:
-            - list_objet (list of instances who inherits of Base)
+            - list_objet (list of instances inherits of Base)
         """
         filename = cls.__name__ + '.json'
         with open(filename, 'w', encoding='utf-8') as f:
@@ -109,10 +110,3 @@ class Base:
                     dummy = cls.create(**my_list[i])
                     my_list_inst.append(dummy)
                 return my_list_inst
-
-    @staticmethod
-    def reset_id():
-        """
-        This method reset the number id. It's necessary for testing.
-        """
-        Base.__nb_objects = 0
