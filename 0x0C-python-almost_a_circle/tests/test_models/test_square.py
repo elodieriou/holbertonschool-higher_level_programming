@@ -327,6 +327,15 @@ class TestSquareToDictionary(unittest.TestCase):
             s1.to_dictionary(1)
 
 
+class TestSquareStrRepresentation(unittest.TestCase):
+    """This class test the str representation of Square."""
+
+    def test_square_str_representation(self):
+        """Test str representation"""
+        s1 = Square(1, 2, 3, 4)
+        self.assertEqual(str(s1), "[Square] (4) 2/3 - 1")
+
+
 class TestSquareInheritance(unittest.TestCase):
     """
     This class test the class Square inherit from Rectangle and Base.
