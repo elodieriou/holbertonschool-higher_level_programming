@@ -9,6 +9,308 @@ from models.base import Base
 from models.rectangle import Rectangle
 
 
+class TestRectangleToDictionary(unittest.TestCase):
+    """Unittests for to_dictionary method of the Rectangle class."""
+
+    def test_to_dictionary_output(self):
+        r = Rectangle(10, 2, 1, 9, 5)
+        correct = {'x': 1, 'y': 9, 'id': 5, 'height': 2, 'width': 10}
+        self.assertDictEqual(correct, r.to_dictionary())
+
+    def test_to_dictionary_arg(self):
+        r = Rectangle(10, 2, 4, 1, 2)
+        with self.assertRaises(TypeError):
+            r.to_dictionary(1)
+
+
+class TestArea(unittest.TestCase):
+
+    def test_area(self):
+        p1 = Rectangle(2, 3)
+        self.assertEqual(p1.area(), 6)
+
+    def test_area_neg(self):
+        with self.assertRaises(ValueError):
+            p1 = Rectangle(-5, -5)
+            p1.area()
+
+    def test_area_zero(self):
+        with self.assertRaises(ValueError):
+            p1 = Rectangle(0, 0)
+            p1.area()
+
+    def test_area_bool(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(True, True)
+            r1.area()
+
+    def test_area_str(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle("Alfred", "Robin")
+            r1.area()
+
+    def test_area_tuple(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle((1, 2, 3), (1, 2, 3))
+            r1.area()
+
+    def test_area_list(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle([1, 2, 3], [1, 2, 3])
+            r1.area()
+
+    def test_area_dict(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle({1, 2, 3}, {1, 2, 3})
+            r1.area()
+
+    def test_area_float(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(float("inf"), 7)
+            r1.area()
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(float("NaN"), 7)
+            r1.area()
+
+    def test_area_empty(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle()
+            r1.area()
+
+    def test_area_None(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(None, None)
+            r1.area()
+
+
+class TestDisplay(unittest.TestCase):
+
+    def test_display(self):
+        r1 = Rectangle(2, 2, 3, 4)
+        self.assertEqual(r1.display(), None)
+
+    def test_display_neg(self):
+        with self.assertRaises(ValueError):
+            r1 = Rectangle(-5, -5, -5, -5)
+            r1.display()
+
+    def test_display_zero(self):
+        with self.assertRaises(ValueError):
+            r1 = Rectangle(0, 0, 0, 0)
+            r1.display()
+
+    def test_display_bool(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(True, False, False, True)
+            r1.display()
+
+    def test_display_str(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle("Alfred", "Robin", "Batman", "Batgirl")
+            r1.display()
+
+    def test_display_tuple(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle((1, 2, 3), (1, 2, 3), (1, 2, 3), (1, 2, 3))
+            r1.display()
+
+    def test_display_list(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle([1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3])
+            r1.display()
+
+    def test_display_dict(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle({1, 2, 3}, {1, 2, 3},
+                           {1, 2, 3}, {1, 2, 3})
+            r1.display()
+
+    def test_display_float_inf(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(float("inf"), float("inf"),
+                           float("inf"), float("inf"))
+            r1.display()
+
+    def test_display_float_NaN(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(float("NaN"), float("NaN"),
+                           float("NaN"), float("NaN"))
+            r1.display()
+
+    def test_display_empty(self):
+        with self.assertRaises(TypeError):
+            Rectangle.display()
+
+    def test_display_None(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(None, None, None, None)
+            r1.display()
+
+    def test_display_no_args(self):
+        """Test the display method without arguments."""
+        r1 = Rectangle(1, 1)
+        sio = io.StringIO()
+        sys.stdout = sio
+        r1.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(sio.getvalue(), "#\n")
+
+    def test_display_no_x(self):
+        """Test the display method without x."""
+        r1 = Rectangle(1, 1, 0, 1)
+        sio = io.StringIO()
+        sys.stdout = sio
+        r1.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(sio.getvalue(), "\n#\n")
+
+    def test_display_no_y(self):
+        """Test the display method without y."""
+        r1 = Rectangle(1, 1, 1)
+        sio = io.StringIO()
+        sys.stdout = sio
+        r1.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(sio.getvalue(), " #\n")
+
+
+class TestWidth(unittest.TestCase):
+
+    def test_instantiation_width_negative(self):
+        with self.assertRaises(ValueError):
+            Rectangle(-1, 1, 1, 1, 1)
+
+    def test_instantiation_width_zero(self):
+        with self.assertRaises(ValueError):
+            Rectangle(0, 1, 1, 1, 1)
+
+    def test_width(self):
+        r1 = Rectangle(5, 5, 2, 3)
+        self.assertEqual(r1.width, 5)
+
+    def test_width_neg(self):
+
+        with self.assertRaises(ValueError):
+            r1 = Rectangle(5, 5, 2, 3)
+            r1.width = -5
+
+    def test_width_zero(self):
+        with self.assertRaises(ValueError):
+            r1 = Rectangle(5, 5, 2, 3)
+            r1.width = 0
+
+    def test_width_bool(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(5, 5, 2, 3)
+            r1.width = True
+
+    def test_width_str(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(5, 5, 2, 3)
+            r1.width = 'hello'
+
+    def test_width_tuple(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(5, 5, 2, 3)
+            r1.width = (1, 2, 3)
+
+    def test_width_list(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(5, 5, 2, 3)
+            r1.width = [1, 2, 3]
+
+    def test_width_dict(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(5, 5, 2, 3)
+            r1.width = {1, 2, 3}
+
+    def test_width_float_inf(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(5, 5, 2, 3)
+            r1.width = float('inf')
+
+    def test_width_float_NaN(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(5, 5, 2, 3)
+            r1.width = float('NaN')
+
+    def test_width_empty(self):
+        with self.assertRaises(TypeError):
+            Rectangle()
+
+    def test_width_None(self):
+        with self.assertRaises(TypeError):
+            Rectangle(None, None, None, None)
+
+
+class TestHeight(unittest.TestCase):
+
+    def test_instantiation_height_negative(self):
+        with self.assertRaises(ValueError):
+            Rectangle(1, -1, 1, 1, 1)
+
+    def test_instantiation_height_zero(self):
+        with self.assertRaises(ValueError):
+            Rectangle(1, 0, 1, 1, 1)
+
+    def test_height(self):
+        r1 = Rectangle(5, 5, 2, 3)
+        self.assertEqual(r1.height, 5)
+
+    def test_height_neg(self):
+        with self.assertRaises(ValueError):
+            r1 = Rectangle(5, 5, 2, 3)
+            r1.height = -5
+
+    def test_height_zero(self):
+        with self.assertRaises(ValueError):
+            r1 = Rectangle(5, 5, 2, 3)
+            r1.height = 0
+
+    def test_height_bool(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(5, 5, 2, 3)
+            r1.height = False
+
+    def test_height_str(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(5, 5, 2, 3)
+            r1.height = 'world'
+
+    def test_height_tuple(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(5, 5, 2, 3)
+            r1.height = (1, 2, 3)
+
+    def test_height_list(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(5, 5, 2, 3)
+            r1.height = [1, 2, 3]
+
+    def test_height_dict(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(5, 5, 2, 3)
+            r1.height = ({1, 2, 3}, {4, 5, 6})
+
+    def test_height_float_inf(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(5, 5, 2, 3)
+            r1.height = float('inf')
+
+    def test_height_float_NaN(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(5, 5, 2, 3)
+            r1.height = float('NaN')
+
+    def test_height_empty(self):
+        with self.assertRaises(TypeError):
+            Rectangle()
+
+    def test_height_None(self):
+        with self.assertRaises(TypeError):
+            Rectangle(None, None, None, None)
+
+
 class TestRectangleInstantiation(unittest.TestCase):
     """Unittest for testing instantiation of the Rectangle Class"""
 
@@ -659,308 +961,6 @@ class TestRectangleUpdateKwargs(unittest.TestCase):
         r = Rectangle(10, 10, 10, 10, 10)
         r.update(height=5, id=89, a=1, b=54, x=19, y=7)
         self.assertEqual("[Rectangle] (89) 19/7 - 10/5", str(r))
-
-
-class TestRectangleToDictionary(unittest.TestCase):
-    """Unittests for to_dictionary method of the Rectangle class."""
-
-    def test_to_dictionary_output(self):
-        r = Rectangle(10, 2, 1, 9, 5)
-        correct = {'x': 1, 'y': 9, 'id': 5, 'height': 2, 'width': 10}
-        self.assertDictEqual(correct, r.to_dictionary())
-
-    def test_to_dictionary_arg(self):
-        r = Rectangle(10, 2, 4, 1, 2)
-        with self.assertRaises(TypeError):
-            r.to_dictionary(1)
-
-
-class TestArea(unittest.TestCase):
-
-    def test_area(self):
-        p1 = Rectangle(2, 3)
-        self.assertEqual(p1.area(), 6)
-
-    def test_area_neg(self):
-        with self.assertRaises(ValueError):
-            p1 = Rectangle(-5, -5)
-            p1.area()
-
-    def test_area_zero(self):
-        with self.assertRaises(ValueError):
-            p1 = Rectangle(0, 0)
-            p1.area()
-
-    def test_area_bool(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle(True, True)
-            r1.area()
-
-    def test_area_str(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle("Alfred", "Robin")
-            r1.area()
-
-    def test_area_tuple(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle((1, 2, 3), (1, 2, 3))
-            r1.area()
-
-    def test_area_list(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle([1, 2, 3], [1, 2, 3])
-            r1.area()
-
-    def test_area_dict(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle({1, 2, 3}, {1, 2, 3})
-            r1.area()
-
-    def test_area_float(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle(float("inf"), 7)
-            r1.area()
-        with self.assertRaises(TypeError):
-            r1 = Rectangle(float("NaN"), 7)
-            r1.area()
-
-    def test_area_empty(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle()
-            r1.area()
-
-    def test_area_None(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle(None, None)
-            r1.area()
-
-
-class TestDisplay(unittest.TestCase):
-
-    def test_display(self):
-        r1 = Rectangle(2, 2, 3, 4)
-        self.assertEqual(r1.display(), None)
-
-    def test_display_neg(self):
-        with self.assertRaises(ValueError):
-            r1 = Rectangle(-5, -5, -5, -5)
-            r1.display()
-
-    def test_display_zero(self):
-        with self.assertRaises(ValueError):
-            r1 = Rectangle(0, 0, 0, 0)
-            r1.display()
-
-    def test_display_bool(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle(True, False, False, True)
-            r1.display()
-
-    def test_display_str(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle("Alfred", "Robin", "Batman", "Batgirl")
-            r1.display()
-
-    def test_display_tuple(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle((1, 2, 3), (1, 2, 3), (1, 2, 3), (1, 2, 3))
-            r1.display()
-
-    def test_display_list(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle([1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3])
-            r1.display()
-
-    def test_display_dict(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle({1, 2, 3}, {1, 2, 3},
-                           {1, 2, 3}, {1, 2, 3})
-            r1.display()
-
-    def test_display_float_inf(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle(float("inf"), float("inf"),
-                           float("inf"), float("inf"))
-            r1.display()
-
-    def test_display_float_NaN(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle(float("NaN"), float("NaN"),
-                           float("NaN"), float("NaN"))
-            r1.display()
-
-    def test_display_empty(self):
-        with self.assertRaises(TypeError):
-            Rectangle.display()
-
-    def test_display_None(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle(None, None, None, None)
-            r1.display()
-
-    def test_display_no_args(self):
-        """Test the display method without arguments."""
-        r1 = Rectangle(1, 1)
-        sio = io.StringIO()
-        sys.stdout = sio
-        r1.display()
-        sys.stdout = sys.__stdout__
-        self.assertEqual(sio.getvalue(), "#\n")
-
-    def test_display_no_x(self):
-        """Test the display method without x."""
-        r1 = Rectangle(1, 1, 0, 1)
-        sio = io.StringIO()
-        sys.stdout = sio
-        r1.display()
-        sys.stdout = sys.__stdout__
-        self.assertEqual(sio.getvalue(), "\n#\n")
-
-    def test_display_no_y(self):
-        """Test the display method without y."""
-        r1 = Rectangle(1, 1, 1)
-        sio = io.StringIO()
-        sys.stdout = sio
-        r1.display()
-        sys.stdout = sys.__stdout__
-        self.assertEqual(sio.getvalue(), " #\n")
-
-
-class TestWidth(unittest.TestCase):
-
-    def test_instantiation_width_negative(self):
-        with self.assertRaises(ValueError):
-            Rectangle(-1, 1, 1, 1, 1)
-
-    def test_instantiation_width_zero(self):
-        with self.assertRaises(ValueError):
-            Rectangle(0, 1, 1, 1, 1)
-
-    def test_width(self):
-        r1 = Rectangle(5, 5, 2, 3)
-        self.assertEqual(r1.width, 5)
-
-    def test_width_neg(self):
-
-        with self.assertRaises(ValueError):
-            r1 = Rectangle(5, 5, 2, 3)
-            r1.width = -5
-
-    def test_width_zero(self):
-        with self.assertRaises(ValueError):
-            r1 = Rectangle(5, 5, 2, 3)
-            r1.width = 0
-
-    def test_width_bool(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle(5, 5, 2, 3)
-            r1.width = True
-
-    def test_width_str(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle(5, 5, 2, 3)
-            r1.width = 'hello'
-
-    def test_width_tuple(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle(5, 5, 2, 3)
-            r1.width = (1, 2, 3)
-
-    def test_width_list(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle(5, 5, 2, 3)
-            r1.width = [1, 2, 3]
-
-    def test_width_dict(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle(5, 5, 2, 3)
-            r1.width = {1, 2, 3}
-
-    def test_width_float_inf(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle(5, 5, 2, 3)
-            r1.width = float('inf')
-
-    def test_width_float_NaN(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle(5, 5, 2, 3)
-            r1.width = float('NaN')
-
-    def test_width_empty(self):
-        with self.assertRaises(TypeError):
-            Rectangle()
-
-    def test_width_None(self):
-        with self.assertRaises(TypeError):
-            Rectangle(None, None, None, None)
-
-
-class TestHeight(unittest.TestCase):
-
-    def test_instantiation_height_negative(self):
-        with self.assertRaises(ValueError):
-            Rectangle(1, -1, 1, 1, 1)
-
-    def test_instantiation_height_zero(self):
-        with self.assertRaises(ValueError):
-            Rectangle(1, 0, 1, 1, 1)
-
-    def test_height(self):
-        r1 = Rectangle(5, 5, 2, 3)
-        self.assertEqual(r1.height, 5)
-
-    def test_height_neg(self):
-        with self.assertRaises(ValueError):
-            r1 = Rectangle(5, 5, 2, 3)
-            r1.height = -5
-
-    def test_height_zero(self):
-        with self.assertRaises(ValueError):
-            r1 = Rectangle(5, 5, 2, 3)
-            r1.height = 0
-
-    def test_height_bool(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle(5, 5, 2, 3)
-            r1.height = False
-
-    def test_height_str(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle(5, 5, 2, 3)
-            r1.height = 'world'
-
-    def test_height_tuple(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle(5, 5, 2, 3)
-            r1.height = (1, 2, 3)
-
-    def test_height_list(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle(5, 5, 2, 3)
-            r1.height = [1, 2, 3]
-
-    def test_height_dict(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle(5, 5, 2, 3)
-            r1.height = ({1, 2, 3}, {4, 5, 6})
-
-    def test_height_float_inf(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle(5, 5, 2, 3)
-            r1.height = float('inf')
-
-    def test_height_float_NaN(self):
-        with self.assertRaises(TypeError):
-            r1 = Rectangle(5, 5, 2, 3)
-            r1.height = float('NaN')
-
-    def test_height_empty(self):
-        with self.assertRaises(TypeError):
-            Rectangle()
-
-    def test_height_None(self):
-        with self.assertRaises(TypeError):
-            Rectangle(None, None, None, None)
 
 
 if __name__ == "__main__":
