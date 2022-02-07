@@ -5,6 +5,7 @@ The module define the class Base.
 import os.path
 import json
 import csv
+import turtle
 
 
 class Base:
@@ -89,10 +90,13 @@ class Base:
         """
         if cls.__name__ == 'Rectangle':
             dummy = cls(1, 2, 3, 4, 5)
-        elif cls.__name__ == 'Square':
+            dummy.update(**dictionary)
+            return dummy
+
+        if cls.__name__ == 'Square':
             dummy = cls(1, 2, 3, 4)
-        dummy.update(**dictionary)
-        return dummy
+            dummy.update(**dictionary)
+            return dummy
 
     @classmethod
     def load_from_file(cls):
