@@ -284,11 +284,23 @@ class TestBaseCreate(unittest.TestCase):
         s2 = Square.create(**s1_dictionary)
         self.assertNotEqual(s1, s2)
 
+    def test_create_rectangle_error(self):
+        """Tests that doesn't create a rectangle"""
+        with self.assertRaises(TypeError):
+            s1 = "create"
+            Rectangle.create(s1)
+
+    def test_create_square_error(self):
+        """Tests that doesn't create a square"""
+        with self.assertRaises(TypeError):
+            s1 = "create"
+            Square.create(s1)
+
 
 class TestLoadFromFile(unittest.TestCase):
     """Class that tests the Base method 'load_from_file'."""
     def test_no_file(self):
-        """Tests when the file doens't exist."""
+        """Tests when the file doesn't exist."""
         if os.path.exists("Square.json"):
             os.remove("Square.json")
         if os.path.exists("Rectangle.json"):
