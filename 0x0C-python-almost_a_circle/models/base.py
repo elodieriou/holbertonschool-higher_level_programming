@@ -5,7 +5,6 @@ The module define the class Base.
 import os.path
 import json
 import csv
-import turtle
 
 
 class Base:
@@ -112,3 +111,43 @@ class Base:
                     dummy = cls.create(**my_list[i])
                     my_list_inst.append(dummy)
                 return my_list_inst
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        The class method serializes in CSV format.
+        Args:
+            - list_objs (list of instances inherits of Base)
+        """
+        filename = cls.__name__ + '.csv'
+        with open(filename, 'w', encoding='utf-8') as f:
+            if list_objs is None:
+                f.write('[]')
+            else:
+                if cls.__name__ == 'Rectangle':
+                    fieldnames = ['id', 'width', 'height', 'x', 'y']
+                elif cls.__name__ == 'Square':
+                    fieldnames = ['id', 'size', 'x', 'y']
+                writer = csv.DictWriter(f, fieldnames=fieldnames)
+                writer.writeheader()
+                for obj in list_objs:
+                    writer.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        The class method deserializes in CSV format.
+        """
+        filename = cls.__name__ + '.csv'
+        if os.path.exists(filename) is False:
+            return []
+        else:
+            with open(filename, 'r', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+                my_list_inst = []
+                for row in reader:
+                    for key, value in row.items():
+                        row[key] = int(value)
+                    dummy = cls.create(**row)
+                    my_list_inst.append(dummy)
+            return my_list_inst
