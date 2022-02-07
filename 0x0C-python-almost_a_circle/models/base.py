@@ -88,15 +88,13 @@ class Base:
         Args:
             - **dictionary: random of args
         """
+        dummy = 0
         if cls.__name__ == 'Rectangle':
-            dummy = cls(1, 2, 3, 4, 5)
-            dummy.update(**dictionary)
-            return dummy
-
-        if cls.__name__ == 'Square':
-            dummy = cls(1, 2, 3, 4)
-            dummy.update(**dictionary)
-            return dummy
+            dummy = cls(1, 1)
+        elif cls.__name__ == 'Square':
+            dummy = cls(1)
+        dummy.update(**dictionary)
+        return dummy
 
     @classmethod
     def load_from_file(cls):
