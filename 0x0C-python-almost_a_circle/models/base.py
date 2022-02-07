@@ -201,5 +201,6 @@ class Base:
         turtle.hideturtle()
         turtle.pencolor("#80ab3c")
         turtle.setpos(-150, -150)
-        turtle.write("The Turtle Geometry is done! (Click to leave).", font=("Arial", 17, "normal"))
+        turtle.write("The Turtle Geometry is done! (Click to leave).",
+                     font=("Arial", 17, "normal"))
         turtle.exitonclick()
