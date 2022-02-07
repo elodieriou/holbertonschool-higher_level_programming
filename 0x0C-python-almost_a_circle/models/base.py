@@ -5,6 +5,7 @@ The module define the class Base.
 import os.path
 import json
 import csv
+import turtle
 
 
 class Base:
@@ -151,3 +152,54 @@ class Base:
                     dummy = cls.create(**row)
                     my_list_inst.append(dummy)
             return my_list_inst
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """
+        The static method opens a window and draws all the Rectangle and
+        Square.
+        Args:
+            - list_rectangles (list): a list of Rectangle instances
+            - list_squares (list): a list of Square instances
+        """
+        turtle.title("Welcome to the Turtle Geometry!")
+        turtle.shape("turtle")
+        turtle.color("#80ab3c")
+        turtle.bgcolor("#faebbb")
+        turtle.pensize(3)
+        turtle.speed(2)
+
+        turtle.pencolor("#0a3591")
+        turtle.showturtle()
+        turtle.penup()
+        turtle.setpos(150, 200)
+        turtle.write("Rectangle are drawing!", font=("Arial", 12, "normal"))
+        for position in list_rectangles:
+            turtle.penup()
+            turtle.goto(position.x, position.y)
+            turtle.pendown()
+            for rectangle in range(2):
+                turtle.forward(position.width)
+                turtle.left(90)
+                turtle.forward(position.height)
+                turtle.left(90)
+
+        turtle.pencolor("#168bb5")
+        turtle.penup()
+        turtle.setpos(150, 180)
+        turtle.write("And Square now!!", font=("Arial", 12, "normal"))
+        for position in list_squares:
+            turtle.penup()
+            turtle.goto(position.x, position.y)
+            turtle.pendown()
+            for square in range(2):
+                turtle.forward(position.size)
+                turtle.left(90)
+                turtle.forward(position.size)
+                turtle.left(90)
+        turtle.penup()
+        turtle.hideturtle()
+        turtle.pencolor("#80ab3c")
+        turtle.setpos(-150, -150)
+        turtle.write("The Turtle Geometry is done! (Click to leave).", font=("Arial", 17, "normal"))
+        turtle.exitonclick()
