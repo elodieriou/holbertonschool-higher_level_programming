@@ -791,13 +791,39 @@ class TestDisplay(unittest.TestCase):
 
     def test_display_empty(self):
         with self.assertRaises(TypeError):
-            r1 = Rectangle()
-            r1.display()
+            Rectangle.display()
 
     def test_display_None(self):
         with self.assertRaises(TypeError):
             r1 = Rectangle(None, None, None, None)
             r1.display()
+
+    def test_display_no_args(self):
+        """Test the display method without arguments."""
+        r1 = Rectangle(1, 1)
+        sio = io.StringIO()
+        sys.stdout = sio
+        r1.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(sio.getvalue(), "#\n")
+
+    def test_display_no_x(self):
+        """Test the display method without x."""
+        r1 = Rectangle(1, 1, 0, 1)
+        sio = io.StringIO()
+        sys.stdout = sio
+        r1.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(sio.getvalue(), "\n#\n")
+
+    def test_display_no_y(self):
+        """Test the display method without y."""
+        r1 = Rectangle(1, 1, 1)
+        sio = io.StringIO()
+        sys.stdout = sio
+        r1.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(sio.getvalue(), " #\n")
 
 
 class TestWidth(unittest.TestCase):
