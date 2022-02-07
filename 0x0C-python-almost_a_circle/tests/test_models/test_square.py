@@ -4,6 +4,7 @@ Add unit test for the class Square.
 """
 import unittest
 from models.base import Base
+from models.rectangle import Rectangle
 from models.square import Square
 
 
@@ -324,6 +325,21 @@ class TestSquareToDictionary(unittest.TestCase):
         s1 = Square(10, 2, 1)
         with self.assertRaises(TypeError):
             s1.to_dictionary(1)
+
+
+class TestSquareInheritance(unittest.TestCase):
+    """
+    This class test the class Square inherit from Rectangle and Base.
+    """
+    def test_square_subclass_of_rectangle(self):
+        """Test if Square is subclass of Rectangle"""
+        Square(5)
+        self.assertTrue(issubclass(Square, Rectangle))
+
+    def test_square_isinstance_of_rectangle(self):
+        """Test if Square is the same instance as Rectangle"""
+        Square(5)
+        self.assertFalse(isinstance(Square, Rectangle))
 
 
 if __name__ == '__main__':
