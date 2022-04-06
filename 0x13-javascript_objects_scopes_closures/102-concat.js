@@ -7,6 +7,5 @@ const content = dataFileA + dataFileB;
 fs.writeFile(args[4], content, err => {
   if (err) {
     console.error(err);
-    return;
   }
 });
