@@ -12,7 +12,7 @@ if __name__ == "__main__":
     cursor.execute("SELECT * FROM states ORDER BY id ASC")
     query_rows = cursor.fetchall()
     for row in query_rows:
-        if row[1[0]] == 'N':
+        if row[1][0] == 'N':
             print(row)
     cursor.close()
     connection.close()
