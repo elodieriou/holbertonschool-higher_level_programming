@@ -17,5 +17,6 @@ if __name__ == "__main__":
 
     session = Session()
     for instance_city in session.query(City).order_by(City.id).all():
-        print("{}: {} -> {}".format(instance_city.id, instance_city.name, instance_city.state.name))
+        print("{}: {} -> {}".format(instance_city.id, instance_city.name,
+                                    instance_city.state.name))
     session.close()
