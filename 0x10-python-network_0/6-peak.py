@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This module difines the function "find_peak" in a list
+"""This module defines the function "find_peak" in a list
 of unsorted integers"""
 
 
