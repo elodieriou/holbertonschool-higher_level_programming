@@ -11,7 +11,7 @@ if __name__ == "__main__":
     else:
         data = {'q': argv[1]}
     url = "http://5771634acedf.c90a0b50.hbtn-cod.io:5000/search_user"
-    req = requests.post(url, data)
+    req = requests.post(url, data=data)
 
     try:
         my_dict = req.json()
