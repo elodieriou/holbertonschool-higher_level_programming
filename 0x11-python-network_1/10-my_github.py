@@ -7,6 +7,8 @@ if __name__ == "__main__":
     from sys import argv
 
     url = "https://api.github.com/user"
-    req = requests.get(url, auth=(argv[1], argv[2]))
+    username = argv[1]
+    pwd = argv[2]
+    req = requests.get(url, auth=(username, pwd))
     my_dict = req.json()
     print(my_dict.get("id"))
