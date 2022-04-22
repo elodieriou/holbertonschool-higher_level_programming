@@ -15,7 +15,7 @@ if __name__ == "__main__":
 
     try:
         my_dict = req.json()
-        if my_dict == {} or argv[1] is int:
+        if my_dict == {}:
             print("No result")
         else:
             print("[<{}>] <{}>".format(my_dict.get("id"), my_dict.get("name")))
