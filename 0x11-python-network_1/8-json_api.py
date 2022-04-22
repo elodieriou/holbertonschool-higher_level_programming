@@ -18,6 +18,6 @@ if __name__ == "__main__":
         if my_dict == {}:
             print("No result")
         else:
-            print("[<{}>] <{}>".format(my_dict.get("id"), my_dict.get("name")))
+            print("[{}] {}".format(my_dict.get("id"), my_dict.get("name")))
     except Exception:
         print("Not a valid JSON")
