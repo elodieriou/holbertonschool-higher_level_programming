@@ -16,13 +16,9 @@ axios
         })
         .catch(function (error) {
           console.log('An error has occurred - ' + error);
-        })
-        .then(function () {
         });
     }
   })
   .catch(function (error) {
     console.log('An error has occurred - ' + error);
-  })
-  .then(function () {
   });

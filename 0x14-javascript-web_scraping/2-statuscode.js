@@ -7,6 +7,4 @@ axios
   })
   .catch(function (error) {
     console.log('code: ' + error.response.status);
-  })
-  .then(function () {
   });

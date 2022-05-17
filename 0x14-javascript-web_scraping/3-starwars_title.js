@@ -9,6 +9,4 @@ axios
   })
   .catch(function (error) {
     console.log('An error has occurred. Code: ' + error.response.status);
-  })
-  .then(function () {
   });
