@@ -10,4 +10,9 @@ axios
         console.log(error);
       }
     });
+  })
+  .catch(function (error) {
+    console.log('code: ' + error.response.status);
+  })
+  .then(function () {
   });
