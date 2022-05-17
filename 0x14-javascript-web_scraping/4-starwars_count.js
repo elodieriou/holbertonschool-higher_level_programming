@@ -6,8 +6,10 @@ axios
     let count = 0;
     const numberFilm = response.data.results.length;
     for (let i = 0; i < numberFilm; i++) {
-      for (let j = 0; j < response.data.results[i].characters.length; j++) {
-        if (response.data.results[i].characters[j].includes('18') === true) {
+      const numberCharacters = response.data.results[i].characters.length
+      for (let j = 0; j < numberCharacters; j++) {
+        const filmForCharacter = response.data.results[i].characters[j]
+        if (filmForCharacter.includes('18') === true) {
           count += 1;
         }
       }
