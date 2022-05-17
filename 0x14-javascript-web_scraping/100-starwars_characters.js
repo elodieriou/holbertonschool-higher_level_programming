@@ -5,8 +5,10 @@ axios
   .get(url)
   .then(function (response) {
     const numberCharacters = response.data.characters.length;
+
     for (let i = 0; i < numberCharacters; i++) {
       const characters = response.data.characters[i];
+
       axios
         .get(characters)
         .then(function (response) {
